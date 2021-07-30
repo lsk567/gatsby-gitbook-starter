@@ -1,0 +1,48 @@
+This page, which is horribly incomplete, should evolve into a guide to creating new targets.
+
+* Reactor Runtime
+A reactor runtime must implement the following things:
+ - ...
+
+** Targets
+*** Accessors (ES5)
+ - Has a working runtime; semantics are slightly different from reactors
+ 
+*** Wirewrap (ES6 + Flow)
+ - Currently under development
+
+*** C
+ - Old, unsafe language
+ - Good compiler support (RISC-V, Patmos)
+ - WCET analysis for Patmos
+ - No runtime yet
+
+*** Rust
+ - Safe system level language
+ - No compiler for FlexPRET or Patmos
+   - There might be some work going on for RISC-V: https://abopen.com/news/rust-comes-risc-v/
+ - No WCET analysis
+   - Actor library: https://github.com/actix/actix
+   - DSL in Rust: https://doc.rust-lang.org/rust-by-example/macros/dsl.html
+   - No runtime yet
+Rust is LLVM based. Can we use the Rust frontend and our LLVM backend?
+We briefly explored it with the Patmos LLVM port, but Rust libraries are called.
+This may be a several PM project (e.g., a master thesis).
+
+**** Rust/Tock discussion with Pat
+ - To get a small kernel, exclude std library with a switch and manually import
+   from core what is needed
+ - Use nightly build from Rust to get latest support
+ - Brad is working on Rust for RISC-V, which we should be able to use
+ - Working on  getting https://www.tockos.org/ running on RISC-V
+ - Tock OS (kernel) is single threaded with yield(), but applications
+   are running in individual threads
+ - Rust embedded group (IRC available)
+ - Tock has a public Slack channel
+
+**** Notes on JavaScript
+ - Node.js can run within Rust (but requires IPC)
+ - Rust can also be compiled to WebAssembly (supported by JS interpreters)
+ - This can be explored for mixed critical, more dynamic systems
+
+*** Ray (Python)
