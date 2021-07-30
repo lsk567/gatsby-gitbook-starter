@@ -1,7 +1,7 @@
 const config = {
   gatsby: {
-    pathPrefix: '/',
-    siteUrl: 'https://hasura.io',
+    pathPrefix: '/lf-wiki-gitbook',
+    siteUrl: 'https://shaokai.io',
     gaTrackingId: null,
     trailingSlash: false,
   },
